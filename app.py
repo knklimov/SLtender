@@ -66,11 +66,13 @@ def process_excel(data_file, plan_file, yellow_step, red_step):
 
 st.title("Редактирование Excel по цвету с разными шагами и минимумами")
 
+yellow_step = st.number_input("Шаг снижения для ЖЁЛТОГО цвета", min_value=1, max_value=10000, value=3)
+red_step = st.number_input("Шаг снижения для КРАСНОГО цвета", min_value=1, max_value=10000, value=5)
+
 plan_file = st.file_uploader("🔢 Загрузите файл с минимальными значениями", type=["xlsx"])
 data_file = st.file_uploader("🎯 Загрузите файл для редактирования (цвета)", type=["xlsx"])
 
-yellow_step = st.number_input("Шаг снижения для ЖЁЛТОГО цвета", min_value=1, max_value=10000, value=3)
-red_step = st.number_input("Шаг снижения для КРАСНОГО цвета", min_value=1, max_value=10000, value=5)
+
 
 if plan_file and data_file:
     processed_file, log = process_excel(data_file, plan_file, yellow_step, red_step)
